@@ -1,0 +1,21 @@
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 24px; */
+    justify-content: space-between;
+}
+img {
+    width: 360px;
+    height: 200px;
+}
+li {
+    list-style-type: none;
+    /* Убираем маркеры */
+}
+
+ul {
+    margin-left: 0;
+    /* Отступ слева в браузере IE и Opera */
+    padding-left: 0;
+    /* Отступ слева в браузере Firefox, Safari, Chrome */
+}
