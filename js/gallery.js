@@ -63,27 +63,26 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
+const gallery = document.querySelector(".gallery");
 
-const gallery = document.querySelector('.gallery');
-function createMarkup(arr) {
-  return arr.map(item => 
-    `<li class="gallery-item">
-  <a class="gallery-link" href="large-image.jpg">
+const galleryItemsHTML = images.map(({ preview, original, description }) => `
+<li class="gallery-item">
+  <a class="gallery-link" href=${original}>
     <img
       class="gallery-image"
-      src="small-image.jpg"
-      data-source="large-image.jpg"
-      alt="Image description"
+      src=${preview}
+      data-source=${original}
+      alt="${description}"
     />
   </a>
-</li>`
-  );
-}
-const galleryItemsHTML = images.map(({ preview, alt, original }) => `<li><img src="${preview}" alt="${alt}" data-source="${original}"></li>`).join('');
+</li>
+`).join("");
+
+
 gallery.insertAdjacentHTML('beforeend', galleryItemsHTML);
 gallery.addEventListener("click", handleClick);
 function handleClick(event) {
-    if (event.target === event.currentTarget) {
+    if (event.target.nodeName !== 'IMG') {
         return;
     }
     const fullSizeImageURL = event.target.dataset.source;
